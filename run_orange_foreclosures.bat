@@ -1,5 +1,5 @@
 @echo off
-cd /d D:\Fig\Documents\RealForeclose
+cd /d D:\Fig\Documents\RealForeclose-FLSites\Orange
 py fetch.py
 py reconcile.py
 git add -A
