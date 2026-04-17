@@ -90,7 +90,7 @@ def parse_waiting_records(section_text: str) -> list[dict]:
         r"Final Judgment Amount:\s*(?P<judgment>\$[\d,]+\.\d{2}|Hidden).*?"
         r"Parcel ID:\s*(?P<parcel>\S+).*?"
         r"Property Address:\s*(?P<address>.*?)"
-        r"Assessed Value:\s*(?P<assessed>\$[\d,]+\.\d{2}|Hidden).*?"
+        r"(?:Assessed Value|Property App\. Market Value):\s*(?P<assessed>\$[\d,]+\.\d{2}|Hidden).*?"
         r"Plaintiff Max Bid:\s*(?P<max_bid>\$[\d,]+\.\d{2}|Hidden)",
         re.DOTALL | re.IGNORECASE,
     )
@@ -109,6 +109,7 @@ def parse_waiting_records(section_text: str) -> list[dict]:
             "Parcel ID:",
             "Property Address:",
             "Assessed Value:",
+            "Property App. Market Value:",
         ]
         for marker in cut_markers:
             pos = address.find(marker)
